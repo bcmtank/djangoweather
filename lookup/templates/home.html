@@ -3,7 +3,55 @@
 
 {% block content %}
 
-<h1>Hello World!!</h1>
+<b>
+</b>
+
+{% if zipcode %}
+	{{ zipcode }}
+{% endif %}
+
+{% if api %}
+	{% if api == "Error ..." %}
+		There was an error, please try again...
+	{% else %}	
+
+
+<div class="jumbotron {{ category_color }}">
+  <h1 class="display-5"><p class="text-center">{{ " AQI "}}</h1>
+  <h2 class="display-1"><p class="font-weight-bold"><p class="text-center">{{ api.0.Category.Name }}</h2>
+  <p class="lead"><p class="text-center">Current {{ api.0.ReportingArea }}, {{ api.0.StateCode }} Air Quality: {{ api.0.AQI }}</p>
+
+    <p class="text-center">{{ category_description }}</p  
+
+    <div class="jumbotron" width="100%">
+</div>
+
+
+<div class="jumbotron {{ category_color_1 }}">
+  <h1 class="display-5"><p class="text-center">{{ " PM2.5 "}}</h1>
+  <h2 class="display-1"><p class="font-weight-bold"><p class="text-center">{{ api.1.Category.Name }}</h2>
+  <p class="lead"><p class="text-center">Current {{ api.1.ReportingArea }}, {{ api.1.StateCode }} PM2.5: {{ api.1.AQI }}</p>
+
+  <p class="text-center">{{ category_description_1 }}</p>
+
+
+</div>
+
+<div class="jumbotron {{ category_color_2 }}">
+  <h1 class="display-5"><p class="text-center">{{ " PM10 "}}</h1>
+  <h2 class="display-1"><p class="text-center">{{ api.2.Category.Name }}</h2>
+  <p class="lead"><p class="text-center">Current {{ api.2.ReportingArea }}, {{ api.2.StateCode }} PM10: {{ api.2.AQI }}
+
+	<p class="text-center">{{ category_description_2 }}</p>
+
+</div>
+
+	{% endif %}
+
+
+
+
+{% endif %}
 
 {% endblock %}
 
